@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <br>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/home/dashboard']" >Dashboard</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Board - <b> NABET </b> </li>
+    </ol>
+  </nav>
+  <br>
+  <div class="row justify-content-center" >
+
+    <div class="col-10" >
+      <div *ngIf='!flag' >Hang on while we are checking the data available!</div>
+      <table *ngIf='flag' id="exampleFormResponse" class="table table-striped  " cellspacing="0" >
+        <thead>
+            <tr>
+                <th *ngFor='let head of header; let i = index'>{{head}}</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let res of response; let i = index'>
+                <th>{{(i+1)}} </th>
+                <td *ngFor='let temp of res; let j = index'>
+                  <span *ngIf='temp.type!= "details" && temp.type!="renew" ' >  {{temp.value}} </span>
+                  <span *ngIf='temp.type == "renew" '>
+                    <button *ngIf='temp.value >6' class="btn btn-success" > {{temp.value}} <span style="display:none">more than 6 months</span> </button>
+                    <button *ngIf='temp.value <= 6 && temp.value >2' class="btn btn-primary" > {{temp.value}}   <span style="display:none">more than 2 months</span>  </button>
+                    <button *ngIf='temp.value <= 2 && temp.value >=2' class="btn btn-warning" > {{temp.value}}   <span style="display:none">less than 2 6 months </span>  </button>
+                    <button *ngIf='temp.value <=1' class="btn btn-danger" > {{temp.value}}  <span style="display:none">less than 1 2 3 4 5 6 months </span>  </button>
+                  </span>
+
+                  <span *ngIf='temp.type == "details" '> <button class="btn btn-success" (click)="getEmployeeDetails(temp.value)"> Details </button> </span>
+
+                </td>
+
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

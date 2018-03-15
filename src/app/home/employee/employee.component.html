@@ -1,0 +1,46 @@
+<div class="container-fluid" >
+  <br>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/home/dashboard']">Dashboard</a></li>
+      <li class="breadcrumb-item"><a [routerLink]="['/home/board']" [queryParams]="{board: boardName }">Board - {{boardName}}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Employee - <b> Sam Manikshaw </b>  </li>
+    </ol>
+  </nav>
+  <p class="text-center" style=" " ><i style="color: #FF9800; font-size:55px;"  class="fas fa-user"></i> &nbsp; &nbsp; <span style="cursor: pointer;" (click)="editEmployee()"> <i class="fas fa-edit"></i> Edit </span> </p>
+  <div class="row justify-content-center" >
+    <div class="col-10 infoBox">
+      <div class="row justify-content-center" >
+        <div class="col-6 col-lg-6 col-md-6 col-sm-12  infoDiv" *ngFor="let data of details" style="">
+        {{data.type}} : <span style="background-color: #c7ceff" > &nbsp; {{data.value}} &nbsp; </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="employeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title " id="exampleModalLabel"> <a> Edit Employee </a></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="height:500px; overflow-y:auto">
+
+        <div class="form-group" *ngFor="let data of details" >
+          <label for="exampleInputEmail1">{{data.type}}</label>
+          <input type="text" class="form-control" [(ngModel)]=data.value (change)="showData()">
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

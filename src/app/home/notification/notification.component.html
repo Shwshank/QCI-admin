@@ -1,0 +1,125 @@
+<div class="">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist" style="margin-left:0; margin-right:0">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#home"> <i class="fas fa-bell bell"></i> <span class="bell" > <b> {{latest.length}} </b> </span> Latest  </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu1"> <i class="fas fa-check read"></i> <span class="read" > <b> {{read.length}} </b> </span> Read  </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu2"> <i class="fas fa-history reminder"></i> <span class="reminder" > <b> {{reminder.length}} </b> </span> Reminder</a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+
+    <div id="home" class="container tab-pane active"  style="height:350px; overflow:auto;  border-top: 3px solid orange; border-radius:1px;">
+      <br>
+
+      <div class="row" *ngFor="let res of latest; let i = index ">
+        <div class="col-10" >
+          <a> <b> {{(i+1)}}. </b> </a>  Emp. Id : {{res.IDno}}
+          <br> {{res.name}} <br> Contract Expires on : {{res.expires}} <br>
+          <span *ngIf="res.reminder" style="background-color:#e91e63; color:#fff ">&nbsp; <i> Reminder</i> &nbsp;</span>
+        </div>
+        <div class="col-1" >
+          <i *ngIf="res.star"  class="fas fa-star start" (click)="l_star(i)" ></i>
+          <i *ngIf="!res.star"  class="fas fa-star " style="color:gray" (click)="l_star(i)" ></i>
+          <i class="fas fa-check read" (click)="l_right(i)"></i>
+          <i class="fas fa-history reminder" (click)="l_clock(i)"></i>
+        </div>
+        <div class="col-12" >
+          <hr color="orange">
+        </div>
+      </div>
+
+    </div>
+
+    <div id="menu1" class="container tab-pane fade" style="height:350px; overflow:auto;  border-top: 3px solid #03a9f4; border-radius:1px;">
+      <br>
+
+      <div class="row" *ngFor="let res of read; let i = index ">
+        <div class="col-10" >
+          <a> <b> {{(i+1)}}. </b> </a>  <i>  Emp. Id : {{res.IDno}} </i> <br> {{res.name}} <br> Contract Expires on : {{res.expires}}
+        </div>
+        <div class="col-1" >
+          <i *ngIf="res.star"  class="fas fa-star start" (click)="r_star(i)" ></i>
+          <i *ngIf="!res.star"  class="fas fa-star " style="color:gray" (click)="r_star(i)" ></i>
+        </div>
+        <div class="col-12" >
+          <hr color="#03a9f4">
+        </div>
+      </div>
+
+    </div>
+    <div id="menu2" class="container tab-pane fade" style="height:350px; overflow:auto;  border-top: 3px solid #e91e63; border-radius:1px;">
+      <br>
+      <div class="row" *ngFor="let res of reminder; let i = index ">
+        <div class="col-10" >
+          <a> <b> {{(i+1)}}. </b> </a>  <i>  Emp. Id : {{res.IDno}} </i> <br> {{res.name}} <br> Contract Expires on : {{res.expires}} <br>
+          <span *ngIf="res.reminder" style="background-color:#e91e63; color:#fff ">&nbsp; <i> Reminder set for : {{res.reminder}} </i> &nbsp;</span>
+        </div>
+        <div class="col-1" >
+          <i *ngIf="res.star"  class="fas fa-star start" (click)="rr_star(i)" ></i>
+          <i *ngIf="!res.star"  class="fas fa-star " style="color:gray" (click)="rr_star(i)" ></i>
+          <i class="fas fa-check read" (click)="rr_right(i)"></i>
+          <i class="fas fa-history reminder" (click)="rr_clock(i)"></i>
+        </div>
+        <div class="col-12" >
+          <hr color="#e91e63">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="reminderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title " id="exampleModalLabel"> <a> Reminder </a></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="">
+        <br>
+        Select date for reminder
+        <input type="date" class="form-control" [(ngModel)]=date>
+        <br><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" (click)="l_setReminder()">Save reminder</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="reminderModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title " id="exampleModalLabel"> <a> Reminder </a></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="">
+        <br>
+        Select date for reminder
+        <input type="date" class="form-control" [(ngModel)]=date>
+        <br><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" (click)="rr_setReminder()">Save reminder</button>
+      </div>
+    </div>
+  </div>
+</div>
