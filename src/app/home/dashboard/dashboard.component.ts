@@ -54,7 +54,6 @@ export class DashboardComponent implements OnInit {
        {'type': 'Experience', 'value': ''}
     ]
 
-
   }
 
   ngOnInit() {
@@ -69,6 +68,11 @@ export class DashboardComponent implements OnInit {
 
   addAnEmployee(){
     $('#employeeModal').modal('show');
+  }
+
+  addEmployee() {
+    this.projectService.addEmployee(this.details);
+    $('#employeeModal').modal('hide');
   }
 
   ngOnDestroy() {

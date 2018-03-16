@@ -1,10 +1,10 @@
 <div class="container-fluid" >
   <br>
-  <nav aria-label="breadcrumb">
+  <nav aria-label="breadcrumb" *ngIf="details" >
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a [routerLink]="['/home/dashboard']">Dashboard</a></li>
-      <li class="breadcrumb-item"><a [routerLink]="['/home/board']" [queryParams]="{board: boardName }">Board - {{boardName}}</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Employee - <b> Sam Manikshaw </b>  </li>
+      <li class="breadcrumb-item"><a [routerLink]="['/home/board']" [queryParams]="{id: details[3].bid }">Board - {{details[3].value}}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Employee - <b> {{details[1].value}} </b>  </li>
     </ol>
   </nav>
   <p class="text-center" style=" " ><i style="color: #FF9800; font-size:55px;"  class="fas fa-user"></i> &nbsp; &nbsp; <span style="cursor: pointer;" (click)="editEmployee()"> <i class="fas fa-edit"></i> Edit </span> </p>
@@ -12,11 +12,12 @@
     <div class="col-10 infoBox">
       <div class="row justify-content-center" >
         <div class="col-6 col-lg-6 col-md-6 col-sm-12  infoDiv" *ngFor="let data of details" style="">
-        {{data.type}} : <span style="background-color: #c7ceff" > &nbsp; {{data.value}} &nbsp; </span>
+        {{data.type}} : <span style="background-color: #c7ceff" *ngIf="data.value"> &nbsp; {{data.value}} &nbsp; </span>
         </div>
       </div>
     </div>
   </div>
+  <br><br>
 </div>
 
 <!-- Modal -->
@@ -39,7 +40,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Save changes</button>
+        <button type="button" class="btn btn-success" (click)="editSaveEmployee()" >Save changes</button>
       </div>
     </div>
   </div>

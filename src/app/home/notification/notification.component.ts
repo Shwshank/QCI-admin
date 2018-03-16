@@ -15,6 +15,7 @@ export class NotificationComponent implements OnInit {
   date : any;
   temp1: any;
   temp2: any;
+  temp3: any;
   sub1 : any;
 
   constructor(private projectService: ProjectService) {
@@ -31,24 +32,28 @@ export class NotificationComponent implements OnInit {
     // this.projectService.getNotification();
   }
 
-  l_star(i){
+  l_star(i, id){
     if(this.latest[i].star){
       this.latest[i].star = false;
     } else {
       this.latest[i].star = true;
     }
+    this.projectService.notification("star","",id);
   }
 
-  l_right(i){
+  l_right(i, id){
     let temp = this.latest[i];
     this.latest.splice(i,1);
     this.read.push(temp);
+    this.projectService.notification("right","",id);
   }
 
-  l_clock(i){
+  l_clock(i, id){
     $('#reminderModal').modal('show');
     this.temp1 = this.latest[i];
     this.temp2 = i;
+    this.temp3 = id;
+
   }
 
   l_setReminder() {
@@ -58,34 +63,39 @@ export class NotificationComponent implements OnInit {
     this.temp1 = temp;
     this.latest.splice(this.temp2,1);
     this.reminder.push(this.temp1);
+    this.projectService.notification("clock", this.date, this.temp3);
   }
 
-  r_star(i){
+  r_star(i, id){
     if(this.read[i].star){
       this.read[i].star = false;
     } else {
       this.read[i].star = true;
     }
+    this.projectService.notification("star","",id);
   }
 
-  rr_star(i){
+  rr_star(i, id){
     if(this.reminder[i].star){
       this.reminder[i].star = false;
     } else {
       this.reminder[i].star = true;
     }
+    this.projectService.notification("star","",id);
   }
 
-  rr_right(i){
+  rr_right(i, id){
     let temp = this.reminder[i];
     this.reminder.splice(i,1);
     this.read.push(temp);
+    this.projectService.notification("right","",id);
   }
 
-  rr_clock(i){
+  rr_clock(i, id){
     $('#reminderModal2').modal('show');
     this.temp1 = this.reminder[i];
     this.temp2 = i;
+    this.temp3 = id;
   }
 
   rr_setReminder() {
@@ -95,6 +105,7 @@ export class NotificationComponent implements OnInit {
     this.temp1 = temp;
     this.reminder.splice(this.temp2,1);
     this.reminder.push(this.temp1);
+    this.projectService.notification("clock", this.date, this.temp3);
   }
 
   ngOnDestroy() {

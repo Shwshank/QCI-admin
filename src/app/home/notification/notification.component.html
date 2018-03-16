@@ -25,10 +25,10 @@
           <span *ngIf="res.reminder" style="background-color:#e91e63; color:#fff ">&nbsp; <i> Reminder</i> &nbsp;</span>
         </div>
         <div class="col-1" >
-          <i *ngIf="res.star"  class="fas fa-star start" (click)="l_star(i)" ></i>
-          <i *ngIf="!res.star"  class="fas fa-star " style="color:gray" (click)="l_star(i)" ></i>
-          <i class="fas fa-check read" (click)="l_right(i)"></i>
-          <i class="fas fa-history reminder" (click)="l_clock(i)"></i>
+          <i *ngIf="res.star"  class="fas fa-star start" (click)="l_star(i, res.nid)" ></i>
+          <i *ngIf="!res.star"  class="fas fa-star " style="color:gray" (click)="l_star(i, res.nid)" ></i>
+          <i class="fas fa-check read" (click)="l_right(i, res.nid)"></i>
+          <i class="fas fa-history reminder" (click)="l_clock(i, res.nid)"></i>
         </div>
         <div class="col-12" >
           <hr color="orange">
@@ -45,8 +45,8 @@
           <a> <b> {{(i+1)}}. </b> </a>  <i>  Emp. Id : {{res.IDno}} </i> <br> {{res.name}} <br> Contract Expires on : {{res.expires}}
         </div>
         <div class="col-1" >
-          <i *ngIf="res.star"  class="fas fa-star start" (click)="r_star(i)" ></i>
-          <i *ngIf="!res.star"  class="fas fa-star " style="color:gray" (click)="r_star(i)" ></i>
+          <i *ngIf="res.star"  class="fas fa-star start" (click)="r_star(i, res.nid)" ></i>
+          <i *ngIf="!res.star"  class="fas fa-star " style="color:gray" (click)="r_star(i, res.nid)" ></i>
         </div>
         <div class="col-12" >
           <hr color="#03a9f4">
@@ -62,10 +62,10 @@
           <span *ngIf="res.reminder" style="background-color:#e91e63; color:#fff ">&nbsp; <i> Reminder set for : {{res.reminder}} </i> &nbsp;</span>
         </div>
         <div class="col-1" >
-          <i *ngIf="res.star"  class="fas fa-star start" (click)="rr_star(i)" ></i>
-          <i *ngIf="!res.star"  class="fas fa-star " style="color:gray" (click)="rr_star(i)" ></i>
-          <i class="fas fa-check read" (click)="rr_right(i)"></i>
-          <i class="fas fa-history reminder" (click)="rr_clock(i)"></i>
+          <i *ngIf="res.star"  class="fas fa-star start" (click)="rr_star(i, res.nid)" ></i>
+          <i *ngIf="!res.star"  class="fas fa-star " style="color:gray" (click)="rr_star(i, res.nid)" ></i>
+          <i class="fas fa-check read" (click)="rr_right(i, res.nid)"></i>
+          <i class="fas fa-history reminder" (click)="rr_clock(i, res.nid)"></i>
         </div>
         <div class="col-12" >
           <hr color="#e91e63">

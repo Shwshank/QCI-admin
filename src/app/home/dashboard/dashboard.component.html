@@ -18,7 +18,7 @@
 
         <div class="col-6 text-center" >
           <br>
-          <button class="btn btn-success" > <i class="far fa-file-excel"></i> Upload CSV </button>
+          <button class="btn btn-success" > <i class="far fa-file-excel"></i> Upload Excel </button>
         </div>
 
         <div class="col-6 text-center" >
@@ -98,13 +98,13 @@
 
         <div class="form-group" *ngFor="let data of details" >
           <label for="exampleInputEmail1">{{data.type}}</label>
-          <input type="text" class="form-control" [(ngModel)]=data.value (change)="showData()">
+          <input type="text" class="form-control" [(ngModel)]=data.value>
         </div>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-success" (click)="addEmployee()">Save</button>
       </div>
     </div>
   </div>

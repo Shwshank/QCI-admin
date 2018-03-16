@@ -9,7 +9,7 @@ import { EmployeeComponent } from './home/employee/employee.component';
 export const routes: Routes = [
 
   { path: 'home', component:  HomeComponent, children: [
-    { path: '', component: EmployeeComponent},
+    { path: '', component: DashboardComponent},
     { path: 'dashboard', component: DashboardComponent},
     { path: 'board', component: BoardComponent},
     { path: 'employee', component: EmployeeComponent},

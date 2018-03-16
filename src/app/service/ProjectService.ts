@@ -72,13 +72,45 @@ export class ProjectService {
 
   getHomePageData() {
     this.apiService.GetHomePageData().subscribe(res=>{
-      console.log(res);
+      // console.log(res);
 
       this.emitGraphData.emit(res.graph);
       this.emitBoard.emit(res.boards);
       this.emitNotification.emit(res.notifications);
 
     })
+  }
+
+  getBoardEmployees(id) {
+    this.apiService.GetBoardEmployees(id).subscribe(res=>{
+      // console.log(res);
+      this.emitBoardTable.emit(res);
+    });
+  }
+
+  getEmployeeDetails(id) {
+    this.apiService.GetEmployeeDetails(id).subscribe(res=>{
+      console.log(res);
+      this.emitEmployeeInfo.emit(res.data);
+    });
+  }
+
+  editSaveEmployee(id, data){
+    this.apiService.EditSaveEmployee(id, data).subscribe(res=>{
+      console.log(res);
+    })
+  }
+
+  addEmployee(data){
+    this.apiService.AddEmployee(data).subscribe(res=>{
+      console.log(res);
+    })
+  }
+
+  notification(type,date,id) {
+    this.apiService.Notification(type,date,id).subscribe(res=>{
+      console.log(res);
+    });
   }
 
   getGraph(){

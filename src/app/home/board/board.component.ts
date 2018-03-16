@@ -20,8 +20,9 @@ export class BoardComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private projectService: ProjectService) {
 
     this.sub1 = this.projectService.emitBoardTable.subscribe(res=>{
+      // console.log(res);
       this.header = res.header;
-      this.response = res.response;
+      this.response = res.employees;
       this.flag = true;
       this.display();
     });
@@ -30,9 +31,9 @@ export class BoardComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.queryParams.subscribe(params => {
       this.id = params['id'];
-      console.log(this.id);
+      this.projectService.getBoardEmployees(this.id);
     });
-    this.projectService.getBoardTable();
+    // this.projectService.getBoardTable();
   }
 
   display() {
