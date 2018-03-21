@@ -18,6 +18,10 @@ import { EmployeeComponent } from './home/employee/employee.component';
 import { BoardComponent } from './home/board/board.component';
 import { ProjectService } from './service/ProjectService';
 import { APIService } from './service/APIService';
+import { EmployeeType1Component } from './home/employee-type1/employee-type1.component';
+import { EmployeeType2Component } from './home/employee-type2/employee-type2.component';
+import { EmployeeType3Component } from './home/employee-type3/employee-type3.component';
+import { SummaryTableComponent } from './home/summary-table/summary-table.component';
 
 
 @NgModule({
@@ -30,7 +34,11 @@ import { APIService } from './service/APIService';
     GraphComponent,
     OrganisationComponent,
     EmployeeComponent,
-    BoardComponent
+    BoardComponent,
+    EmployeeType1Component,
+    EmployeeType2Component,
+    EmployeeType3Component,
+    SummaryTableComponent
   ],
   imports: [
     FormsModule,
