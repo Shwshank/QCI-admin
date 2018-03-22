@@ -58,6 +58,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     // this.projectService.getBoard();
+    this.regular();
     this.projectService.getSummary();
     this.projectService.getHomePageData();
   }
@@ -73,6 +74,18 @@ export class DashboardComponent implements OnInit {
   addEmployee() {
     this.projectService.addEmployee(this.details);
     $('#employeeModal').modal('hide');
+  }
+
+  regular() {
+    console.log("regular")
+  }
+
+  pro() {
+    console.log("pro");
+  }
+
+  third() {
+    console.log("third");
   }
 
   ngOnDestroy() {

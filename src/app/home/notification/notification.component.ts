@@ -21,7 +21,7 @@ export class NotificationComponent implements OnInit {
   constructor(private projectService: ProjectService) {
 
     this.sub1 = this.projectService.emitNotification.subscribe(res=>{
-      console.log(res);
+      
       this.latest = res.latest;
       this.read = res.read;
       this.reminder = res.reminder;

@@ -12,7 +12,6 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { NotificationComponent } from './home/notification/notification.component';
-import { GraphComponent } from './home/graph/graph.component';
 import { OrganisationComponent } from './home/organisation/organisation.component';
 import { EmployeeComponent } from './home/employee/employee.component';
 import { BoardComponent } from './home/board/board.component';
@@ -22,6 +21,7 @@ import { EmployeeType1Component } from './home/employee-type1/employee-type1.com
 import { EmployeeType2Component } from './home/employee-type2/employee-type2.component';
 import { EmployeeType3Component } from './home/employee-type3/employee-type3.component';
 import { SummaryTableComponent } from './home/summary-table/summary-table.component';
+import { DepartmentCategoryComponent } from './home/department-category/department-category.component';
 
 
 @NgModule({
@@ -31,14 +31,14 @@ import { SummaryTableComponent } from './home/summary-table/summary-table.compon
     LoginComponent,
     DashboardComponent,
     NotificationComponent,
-    GraphComponent,
     OrganisationComponent,
     EmployeeComponent,
     BoardComponent,
     EmployeeType1Component,
     EmployeeType2Component,
     EmployeeType3Component,
-    SummaryTableComponent
+    SummaryTableComponent,
+    DepartmentCategoryComponent
   ],
   imports: [
     FormsModule,
