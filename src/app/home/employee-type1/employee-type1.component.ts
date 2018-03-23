@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProjectService } from '../../service/ProjectService';
 
 @Component({
   selector: 'app-employee-type1',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeType1Component implements OnInit {
 
-  constructor() { }
+  empType : any;
+  sub1: any;
+
+  constructor(private projectService: ProjectService, private router: Router) {
+    this.sub1 = this.projectService.emitEmployeeType.subscribe(res=>{
+      this.empType = res;
+    });
+  }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.sub1.unsubscribe();
+  }
+
+  getEmpType() {
+    this.router.navigate(['/home/employeeType'], { queryParams: { empType: this.empType }});
   }
 
 }

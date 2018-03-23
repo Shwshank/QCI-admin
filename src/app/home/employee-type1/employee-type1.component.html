@@ -4,7 +4,7 @@
 
     <div class="col-lg-12 col-md-12 col-sm-12">
       <br>
-      <h5>Employee Notification Summary - Regular</h5>
+      <h5>Employee Notification Summary - {{empType}}</h5>
       <app-summary-table></app-summary-table>
     </div>
 
@@ -16,8 +16,7 @@
         <div class="container-fluid" >
 
           <div class="col-12" >
-            <br>
-            <button type="button" name="button" class="btn btn-success" style="width:100%" ><i class="fas fa-users"></i> View Employees </button>
+            <button type="button" name="button" class="btn btn-success" style="width:100%" (click)="getEmpType()"><i class="fas fa-users"></i> View Employees </button>
           </div>
 
           <div class="col-12" >
@@ -35,7 +34,7 @@
       </div>
     </div>
 
-    <div class="col-lg-8 col-md-8 col-sm-12" style="height: 37vh; overflow-y: auto">
+    <div class="col-lg-8 col-md-8 col-sm-12" style="height: 230px; overflow-y: auto">
       <br>
       <h5> Employee Department Category </h5>
         <app-department-category></app-department-category>

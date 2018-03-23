@@ -43,14 +43,14 @@ body{
 }
 
 .divHeight1{
-  min-height: 600px;
+  min-height: 80vh;
   box-shadow: 6px 7px 14px 0px #888888;
   // border: 3px solid #67d84c;
   border-radius: 3px;
   margin: 12px;
   background: #fff;
   overflow-y: auto;
-  margin-top: 25px;
+  // margin-top: 25px;
 }
 
 a{
@@ -107,4 +107,12 @@ th{
 .sTableBody{
   background-color: $secondary-color;
   color: #fff
+}
+
+td span button.btn.btn-success,td span button.btn.btn-primary, td span button.btn.btn-danger, td span button.btn.btn-warning  {
+  padding-top: .1rem !important; padding-bottom: .1rem !important;
+}
+
+td {
+  padding-top: .1rem !important; padding-bottom: .1rem !important;
 }

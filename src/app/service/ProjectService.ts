@@ -23,6 +23,11 @@ export class ProjectService {
   emitBoardTable = new EventEmitter<any>();
   emitNewEmployeeData = new EventEmitter<any>();
   emitEmployeeInfo = new EventEmitter<any>();
+  emitNotificationTableSummary = new EventEmitter<any>();
+  emitDepartmentCategory = new EventEmitter<any>();
+  emitEmployeeType = new EventEmitter<any>();
+  emitGetSummaryData = new EventEmitter<any>();
+  emitGetEmpTypeData = new EventEmitter<any>();
 
   constructor(private apiService: APIService) {
 
@@ -72,18 +77,15 @@ export class ProjectService {
 
   getHomePageData() {
     this.apiService.GetHomePageData().subscribe(res=>{
-      // console.log(res);
-
-      this.emitGraphData.emit(res.graph);
-      this.emitBoard.emit(res.boards);
+      console.log(res);
       this.emitNotification.emit(res.notifications);
 
     })
   }
 
-  getBoardEmployees(id) {
-    this.apiService.GetBoardEmployees(id).subscribe(res=>{
-      // console.log(res);
+  getBoardEmployees(id, empType) {
+    this.apiService.GetBoardEmployees(id, empType).subscribe(res=>{
+      console.log(res);
       this.emitBoardTable.emit(res);
     });
   }
@@ -139,6 +141,30 @@ export class ProjectService {
 
   getEmployeeInfo() {
     this.emitEmployeeInfo.emit(this.employeeInfo);
+  }
+
+  getNotificationTableSummary(id) {
+
+    this.apiService.GetNotificationTableSummary(id).subscribe(res=>{
+      // console.log(res);
+      this.emitEmployeeType.emit(id);
+      this.emitNotificationTableSummary.emit({notificationHeader: res.monthwise_header, notificationContent: res.monthwise});
+      this.emitDepartmentCategory.emit({departmentHeader:res.boardwise_header, content: res.boardwise});
+    });
+  }
+
+  getSummaryData(desc, month, empType) {
+    this.apiService.GetSummaryData(desc, month, empType).subscribe(res=>{
+      console.log(res);
+      this.emitGetSummaryData.emit({ header: res.header, content: res.employees });
+    })
+  }
+
+  getEmpTypeData(empType) {
+    this.apiService.GetEmpTypeData(empType).subscribe(res=>{
+      console.log(res);
+      this.emitGetEmpTypeData.emit({ header: res.header, content: res.employees });
+    })
   }
 
 }

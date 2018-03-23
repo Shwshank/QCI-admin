@@ -5,10 +5,10 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Employee ID" aria-label="Search">
-        <button class="btn btn-secondary navbarSearch" type="submit" >Search</button>
-      </form>
+      <div class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Employee ID" aria-label="Search" [(ngModel)]=id>
+        <button class="btn btn-secondary navbarSearch" type="submit" (click)="search()" >Search</button>
+      </div>
     </ul>
 
     <span class="navbar-text primaryText">

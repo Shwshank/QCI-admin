@@ -4,7 +4,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a [routerLink]="['/home/dashboard']" >Dashboard</a></li>
       <li class="breadcrumb-item"><a [routerLink]="['/home/employeeType']" [queryParams]="{empType: empType }">{{empType}}</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Board - <b> {{departmentName}} </b> </li>
+      <li class="breadcrumb-item active" aria-current="page"> <b> {{desc}} - {{month}} </b> </li>
     </ol>
   </nav>
   <br>
@@ -23,7 +23,7 @@
                 <th>{{(i+1)}} </th>
 
                 <td *ngFor='let temp of res; let j = index'>
-                  <span *ngIf='temp.type!= "Details" && temp.type!="renewtime" && temp.type!="button"' >  {{temp.value}} </span>
+                  <span *ngIf='temp.type!= "Details" && temp.type!="renewtime" && temp.type!="button"' > {{temp.value}} </span>
                   <span *ngIf='temp.type == "button" && temp.value'>
                      <!-- &nbsp;  <button class="btn btn-success"> {{temp.value}}</button> -->
                     <button *ngIf='temp.diffsec >15552000' class="btn btn-success" > {{temp.value}} <span style="display:none">more than 6 months</span> </button>
@@ -32,7 +32,7 @@
                     <button *ngIf='temp.diffsec <=2592000' class="btn btn-danger" > {{temp.value}}  <span style="display:none">less than 1 2 3 4 5 6 months </span>  </button>
                   </span>
 
-                  <span *ngIf='temp.type == "button" && !temp.value'>  N A  </span>
+                  <span *ngIf='temp.type == "button" && !temp.value'>  N A </span>
 
                   <span *ngIf='temp.type == "Details" && temp.type!="button"'> <button class="btn btn-success" (click)="getEmployeeDetails(temp.value)"> Details </button> </span>
 

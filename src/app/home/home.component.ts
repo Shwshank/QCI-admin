@@ -8,9 +8,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  id: any;
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  search() {
+    this.router.navigate(['/home/employeeOnly'], { queryParams: { id: this.id } });
+    this.id="";
+  }
 }

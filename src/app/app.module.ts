@@ -12,7 +12,6 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { NotificationComponent } from './home/notification/notification.component';
-import { OrganisationComponent } from './home/organisation/organisation.component';
 import { EmployeeComponent } from './home/employee/employee.component';
 import { BoardComponent } from './home/board/board.component';
 import { ProjectService } from './service/ProjectService';
@@ -22,6 +21,9 @@ import { EmployeeType2Component } from './home/employee-type2/employee-type2.com
 import { EmployeeType3Component } from './home/employee-type3/employee-type3.component';
 import { SummaryTableComponent } from './home/summary-table/summary-table.component';
 import { DepartmentCategoryComponent } from './home/department-category/department-category.component';
+import { BoardQuickSummaryComponent } from './home/board-quick-summary/board-quick-summary.component';
+import { BoardEmployeeTypeComponent } from './home/board-employee-type/board-employee-type.component';
+import { EmployeeOnlyComponent } from './home/employee-only/employee-only.component';
 
 
 @NgModule({
@@ -31,14 +33,16 @@ import { DepartmentCategoryComponent } from './home/department-category/departme
     LoginComponent,
     DashboardComponent,
     NotificationComponent,
-    OrganisationComponent,
     EmployeeComponent,
     BoardComponent,
     EmployeeType1Component,
     EmployeeType2Component,
     EmployeeType3Component,
     SummaryTableComponent,
-    DepartmentCategoryComponent
+    DepartmentCategoryComponent,
+    BoardQuickSummaryComponent,
+    BoardEmployeeTypeComponent,
+    EmployeeOnlyComponent
   ],
   imports: [
     FormsModule,

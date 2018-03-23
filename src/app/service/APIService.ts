@@ -4,8 +4,8 @@ import { EventEmitter, Injectable } from '@angular/core';
 @Injectable()
 export class APIService {
 
-  // projectURL: string = 'http://192.168.15.187:8000';
-  projectURL: string = 'https://qcitech.org:8082';
+  projectURL: string = 'http://192.168.15.187:8000';
+  // projectURL: string = 'https://qcitech.org:8082';
 
   userID : any = "";
 
@@ -31,9 +31,10 @@ export class APIService {
     return this.http.get(this.projectURL+'/getHomePage').map(res=>res.json());
   }
 
-  GetBoardEmployees(id){
+  GetBoardEmployees(id, empType){
     let data = new FormData();
     data.append('bid',id);
+    data.append('empType',empType);
     return this.http.post(this.projectURL+'/getBoardEmployees',data).map(res=>res.json());
   }
 
@@ -74,4 +75,25 @@ export class APIService {
     data.append('id',id);
     return this.http.post(this.projectURL+'/notification',data).map(res=>res.json());
   }
+
+  GetNotificationTableSummary(id) {
+    let data = new FormData();
+    data.append('id',id);
+    return this.http.post(this.projectURL+'/getEmployeeType',data).map(res=>res.json());
+  }
+
+  GetSummaryData(desc, month, empType) {
+    let data = new FormData();
+    data.append('desc',desc);
+    data.append('month',month);
+    data.append('empType',empType);
+    return this.http.post(this.projectURL+'/getEmployeesinMonth',data).map(res=>res.json());
+  }
+
+  GetEmpTypeData(empType) {
+    let data = new FormData();
+    data.append('empType',empType);
+    return this.http.post(this.projectURL+'/getAllEmployees',data).map(res=>res.json());
+  }
+
 }

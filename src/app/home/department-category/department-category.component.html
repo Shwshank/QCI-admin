@@ -6,42 +6,17 @@
       <thead class="sTableBody">
         <tr>
           <th scope="col" >#</th>
-          <th scope="col">Department</th>
-          <th scope="col">Employees</th>
-          <th scope="col">Details</th>
+          <th *ngFor="let header of headerArray" scope="col" style="text-align: center;">{{header}}</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+        <tr *ngFor="let content of contentArray; let i = index" >
+          <th scope="row">{{i+1}}</th>
+          <td style="text-align: center;">{{content.name}}</td>
+          <td style="text-align: center;">{{content.noEmp}}</td>
+          <td style="text-align: center;"> <button class="btn btn-success" (click)="getDetails(content.bid, content.name)" style="padding-top: .1rem !important; padding-bottom: .1rem !important;"> Details </button> </td>
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-        <tr>
-          <th scope="row">4</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-        <tr>
-          <th scope="row">5</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
+
       </tbody>
     </table>
 

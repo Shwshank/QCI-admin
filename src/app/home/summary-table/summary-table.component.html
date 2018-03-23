@@ -6,41 +6,20 @@
       <thead class="sTableBody">
         <tr>
           <th scope="col" >#</th>
-          <th scope="col">Month</th>
-          <th scope="col">Notification1</th>
-          <th scope="col">Notification2</th>
+          <th *ngFor="let header of headerArray" scope="col"  style="text-align: center;">{{header}}</th>
         </tr>
       </thead>
       <tbody >
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-        <tr>
-          <th scope="row">4</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-        <tr>
-          <th scope="row">5</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
+        <tr  *ngFor='let content of contentArray; let i = index'>
+          <th scope="row">{{(i+1)}}</th>
+          <td *ngFor='let con of content; let j = index' style="text-align: center;">
+            <span *ngIf="con.type=='Month'" >{{con.value}}</span>
+            <span *ngIf="con.type=='button'" >
+              <button *ngIf="con.value == 0" class="btn btn-secondary" style="padding-top: .1rem !important; padding-bottom: .1rem !important;"> {{con.value}} </button>
+              <button *ngIf="con.value>0" class="btn btn-success"  style="padding-top: .1rem !important; padding-bottom: .1rem !important;" (click)="getDetails(i,j,con.desc,content[0].value)" > {{con.value}} </button>
+            </span>
+
+          </td>
         </tr>
       </tbody>
     </table>

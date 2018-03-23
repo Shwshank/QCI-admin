@@ -4,11 +4,12 @@ import { ProjectService } from '../../service/ProjectService';
 declare var $: any;
 
 @Component({
-  selector: 'app-board',
-  templateUrl: './board.component.html',
-  styleUrls: ['./board.component.scss']
+  selector: 'app-board-employee-type',
+  templateUrl: './board-employee-type.component.html',
+  styleUrls: ['./board-employee-type.component.scss']
 })
-export class BoardComponent implements OnInit {
+
+export class BoardEmployeeTypeComponent implements OnInit {
 
   flag: any = false ;
   header: any = [];
@@ -18,26 +19,25 @@ export class BoardComponent implements OnInit {
   id: any;
   empType: any;
   departmentName: any;
+  month: any;
+  desc: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private projectService: ProjectService) {
 
-    this.sub1 = this.projectService.emitBoardTable.subscribe(res=>{
+    this.sub1 = this.projectService.emitGetEmpTypeData.subscribe(res=>{
       // console.log(res);
       this.header = res.header;
-      this.response = res.employees;
+      this.response = res.content;
       this.flag = true;
       this.display();
       this.departmentName = localStorage.getItem('department');
-      this.empType = localStorage.getItem('empType');
     });
   }
 
   ngOnInit() {
-
     this.sub = this.route.queryParams.subscribe(params => {
-      this.id = params['id'];
       this.empType = params['empType'];
-      this.projectService.getBoardEmployees(this.id, this.empType);
+      this.projectService.getEmpTypeData(this.empType);
     });
     // this.projectService.getBoardTable();
   }

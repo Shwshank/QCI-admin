@@ -4,11 +4,12 @@ import { ProjectService } from '../../service/ProjectService';
 declare var $: any;
 
 @Component({
-  selector: 'app-board',
-  templateUrl: './board.component.html',
-  styleUrls: ['./board.component.scss']
+  selector: 'app-board-quick-summary',
+  templateUrl: './board-quick-summary.component.html',
+  styleUrls: ['./board-quick-summary.component.scss']
 })
-export class BoardComponent implements OnInit {
+
+export class BoardQuickSummaryComponent implements OnInit {
 
   flag: any = false ;
   header: any = [];
@@ -18,26 +19,27 @@ export class BoardComponent implements OnInit {
   id: any;
   empType: any;
   departmentName: any;
+  month: any;
+  desc: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private projectService: ProjectService) {
 
-    this.sub1 = this.projectService.emitBoardTable.subscribe(res=>{
+    this.sub1 = this.projectService.emitGetSummaryData.subscribe(res=>{
       // console.log(res);
       this.header = res.header;
-      this.response = res.employees;
+      this.response = res.content;
       this.flag = true;
       this.display();
       this.departmentName = localStorage.getItem('department');
-      this.empType = localStorage.getItem('empType');
     });
   }
 
   ngOnInit() {
-
     this.sub = this.route.queryParams.subscribe(params => {
-      this.id = params['id'];
+      this.desc = params['desc'];
+      this.month = params['month'];
       this.empType = params['empType'];
-      this.projectService.getBoardEmployees(this.id, this.empType);
+      this.projectService.getSummaryData(this.desc, this.month, this.empType);
     });
     // this.projectService.getBoardTable();
   }

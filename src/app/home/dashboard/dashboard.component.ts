@@ -77,15 +77,18 @@ export class DashboardComponent implements OnInit {
   }
 
   regular() {
-    console.log("regular")
+    this.projectService.getNotificationTableSummary("Regular");
+    localStorage.setItem('empType', "Regular");
   }
 
   pro() {
-    console.log("pro");
+    this.projectService.getNotificationTableSummary("Professional");
+    localStorage.setItem('empType', "Professional");
   }
 
   third() {
-    console.log("third");
+    this.projectService.getNotificationTableSummary("Third Party");
+    localStorage.setItem('empType', "Third Party");
   }
 
   ngOnDestroy() {

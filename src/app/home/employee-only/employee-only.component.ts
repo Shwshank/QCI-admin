@@ -4,11 +4,12 @@ import { ProjectService } from '../../service/ProjectService';
 declare var $: any;
 
 @Component({
-  selector: 'app-employee',
-  templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.scss']
+  selector: 'app-employee-only',
+  templateUrl: './employee-only.component.html',
+  styleUrls: ['./employee-only.component.scss']
 })
-export class EmployeeComponent implements OnInit {
+
+export class EmployeeOnlyComponent implements OnInit {
 
   boardName: any = "NABET";
   details: any = [{bid:""},{bid:""},{bid:""},{bid:""}];
@@ -20,6 +21,7 @@ export class EmployeeComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private projectService: ProjectService) {
 
     this.sub1 = this.projectService.emitEmployeeInfo.subscribe(res=>{
+      this.details="";
       this.details = res;
     })
 
