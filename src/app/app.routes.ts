@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 
+import { AuthGuard } from './service/zauthGuard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
@@ -14,14 +15,14 @@ export const routes: Routes = [
 
   { path: 'home', component:  HomeComponent, children: [
     { path: '', component: DashboardComponent},
-    { path: 'dashboard', component: DashboardComponent},
-    { path: 'board', component: BoardComponent},
-    { path: 'employee', component: EmployeeComponent},
-    { path: 'employeeOnly', component: EmployeeOnlyComponent},
-    { path: 'categorySummary', component: BoardQuickSummaryComponent},
-    { path: 'employeeType', component: BoardEmployeeTypeComponent},
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+    { path: 'board', component: BoardComponent, canActivate: [AuthGuard]},
+    { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard]},
+    { path: 'employeeOnly', component: EmployeeOnlyComponent, canActivate: [AuthGuard]},
+    { path: 'categorySummary', component: BoardQuickSummaryComponent, canActivate: [AuthGuard]},
+    { path: 'employeeType', component: BoardEmployeeTypeComponent, canActivate: [AuthGuard]},
     { path: '**', redirectTo:'/dashboard' }
-  ]},
+  ], canActivate: [AuthGuard]},
 
   { path: 'login', component:  LoginComponent },
   { path: '**', redirectTo:'/login' }

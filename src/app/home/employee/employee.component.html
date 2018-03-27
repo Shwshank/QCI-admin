@@ -10,9 +10,9 @@
   </nav>
   <p class="text-center" style=" " ><i style="color: #FF9800; font-size:55px;"  class="fas fa-user"></i> &nbsp; &nbsp; <span style="cursor: pointer;" (click)="editEmployee()"> <i class="fas fa-edit"></i> Edit </span> </p>
   <div class="row justify-content-center" >
-    <div class="col-10 infoBox" style="background-color:white; border: 10px solid white; border-radius:5px" >
+    <div class="col-10 infoBox" style="background-color:white; border: 10px solid white; border-radius:5px;" >
       <div class="row justify-content-center" >
-        <div class="col-6 col-lg-6 col-md-6 col-sm-12  infoDiv" *ngFor="let data of details" style="">
+        <div class="col-6 col-lg-6 col-md-6 col-sm-12  infoDiv" *ngFor="let data of details" style="min-height:80px !important; overflow-y:auto">
         {{data.type}} : <span style="background-color: #c7ceff" *ngIf="data.value"> &nbsp; {{data.value}} &nbsp; </span>
         </div>
       </div>
@@ -35,7 +35,7 @@
 
         <div class="form-group" *ngFor="let data of details" >
           <label for="exampleInputEmail1">{{data.type}}</label>
-          <input type="text" class="form-control" [(ngModel)]=data.value (change)="showData()">
+          <input type="text" class="form-control" [(ngModel)]=data.value>
         </div>
 
       </div>

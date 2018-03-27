@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../../service/ProjectService';
+import { Router, ActivatedRoute } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -18,10 +19,10 @@ export class NotificationComponent implements OnInit {
   temp3: any;
   sub1 : any;
 
-  constructor(private projectService: ProjectService) {
+  constructor(private projectService: ProjectService, private router: Router) {
 
     this.sub1 = this.projectService.emitNotification.subscribe(res=>{
-      
+      // console.log(res);
       this.latest = res.latest;
       this.read = res.read;
       this.reminder = res.reminder;
@@ -30,6 +31,10 @@ export class NotificationComponent implements OnInit {
 
   ngOnInit() {
     // this.projectService.getNotification();
+  }
+
+  getEmployee(id) {
+    this.router.navigate(['/home/employeeOnly'], { queryParams: { id: id } });
   }
 
   l_star(i, id){

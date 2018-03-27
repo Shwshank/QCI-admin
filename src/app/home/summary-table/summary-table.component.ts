@@ -35,7 +35,7 @@ export class SummaryTableComponent implements OnInit {
   }
 
   getDetails(i,j,desc, month) {
-    console.log(i+", "+j+", "+desc+", "+month);
+    // console.log(i+", "+j+", "+desc+", "+month);
     this.router.navigate(['/home/categorySummary'], { queryParams: { desc:desc, month: month, empType: this.empType }});
   }
 }

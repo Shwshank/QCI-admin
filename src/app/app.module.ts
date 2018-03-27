@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import 'rxjs/add/operator/map';
 
+import { AuthGuard } from './service/zauthGuard';
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -52,6 +53,7 @@ import { EmployeeOnlyComponent } from './home/employee-only/employee-only.compon
     RouterModule.forRoot(routes, { useHash: true }),
   ],
   providers: [
+    AuthGuard,
     ProjectService,
     APIService
   ],

@@ -19,4 +19,9 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/home/employeeOnly'], { queryParams: { id: this.id } });
     this.id="";
   }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
 }

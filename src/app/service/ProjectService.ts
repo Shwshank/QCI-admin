@@ -28,6 +28,9 @@ export class ProjectService {
   emitEmployeeType = new EventEmitter<any>();
   emitGetSummaryData = new EventEmitter<any>();
   emitGetEmpTypeData = new EventEmitter<any>();
+  emitForm1 = new EventEmitter<any>();
+  emitForm2 = new EventEmitter<any>();
+  emitForm3 = new EventEmitter<any>();
 
   constructor(private apiService: APIService) {
 
@@ -77,7 +80,7 @@ export class ProjectService {
 
   getHomePageData() {
     this.apiService.GetHomePageData().subscribe(res=>{
-      console.log(res);
+      // console.log(res);
       this.emitNotification.emit(res.notifications);
 
     })
@@ -85,33 +88,33 @@ export class ProjectService {
 
   getBoardEmployees(id, empType) {
     this.apiService.GetBoardEmployees(id, empType).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
       this.emitBoardTable.emit(res);
     });
   }
 
   getEmployeeDetails(id) {
     this.apiService.GetEmployeeDetails(id).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
       this.emitEmployeeInfo.emit(res.data);
     });
   }
 
   editSaveEmployee(id, data){
     this.apiService.EditSaveEmployee(id, data).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
     })
   }
 
   addEmployee(data){
     this.apiService.AddEmployee(data).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
     })
   }
 
   notification(type,date,id) {
     this.apiService.Notification(type,date,id).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
     });
   }
 
@@ -147,6 +150,7 @@ export class ProjectService {
 
     this.apiService.GetNotificationTableSummary(id).subscribe(res=>{
       // console.log(res);
+      this.emitForm1.emit(res.form);
       this.emitEmployeeType.emit(id);
       this.emitNotificationTableSummary.emit({notificationHeader: res.monthwise_header, notificationContent: res.monthwise});
       this.emitDepartmentCategory.emit({departmentHeader:res.boardwise_header, content: res.boardwise});
@@ -155,14 +159,14 @@ export class ProjectService {
 
   getSummaryData(desc, month, empType) {
     this.apiService.GetSummaryData(desc, month, empType).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
       this.emitGetSummaryData.emit({ header: res.header, content: res.employees });
     })
   }
 
   getEmpTypeData(empType) {
     this.apiService.GetEmpTypeData(empType).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
       this.emitGetEmpTypeData.emit({ header: res.header, content: res.employees });
     })
   }

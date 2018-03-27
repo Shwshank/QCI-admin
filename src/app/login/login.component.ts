@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  email: any;
+  password: any;
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    let temp = localStorage.getItem("token");
+    if(temp === "true") {
+      this.router.navigate(['/home']);
+    }
+  }
+
+  login() {
+    if(this.email === "admin@qcin.org" && this.password === "1234") {
+      this.router.navigate(['/home']);
+      localStorage.setItem("token","true");
+    } else {
+      alert('Invalid Credentials!');
+      this.email = "";
+      this.password = "";
+    }
   }
 
 }

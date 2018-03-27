@@ -4,9 +4,9 @@
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#home"> <i class="fas fa-bell bell"></i> <span class="bell" > <b> {{latest.length}} </b> </span> Latest  </a>
     </li>
-    <li class="nav-item">
+    <!-- <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#menu1"> <i class="fas fa-check read"></i> <span class="read" > <b> {{read.length}} </b> </span> Read  </a>
-    </li>
+    </li> -->
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#menu2"> <i class="fas fa-history reminder"></i> <span class="reminder" > <b> {{reminder.length}} </b> </span> Reminder</a>
     </li>
@@ -20,14 +20,21 @@
 
       <div class="row" *ngFor="let res of latest; let i = index ">
         <div class="col-10" >
-          <a> <b> {{(i+1)}}. </b> </a>  Emp. Id : {{res.IDno}}
-          <br> {{res.name}} <br> Contract Expires on : {{res.expires}} <br>
+          <a> <b> {{(i+1)}}. </b> </a>  Emp. Id : <span (click)="getEmployee(res.IDno)" style="cursor: pointer;"> <i> <u> {{res.IDno}}</u></i> </span>
+          <br>{{res.name}}
+          <br>
+          <span *ngIf="res.message1 == 'Post confirmation'" style="background-color:#c5c9f5"> {{res.message1}} </span>
+          <span *ngIf="res.message1 == 'Increment'" style="background-color:#a9f5ac"> {{res.message1}} </span>
+          <span *ngIf="res.message1 == 'Promotion'" style="background-color:#b3e8fd"> {{res.message1}} </span>
+          <span *ngIf="res.message1 == 'Superannuation'" style="background-color:#ffd5a7"> {{res.message1}} </span>
+          <span *ngIf="res.message1 == 'Tenure completion'" style="background-color:#ffb8e5"> {{res.message1}} </span>
+          &nbsp; {{res.message2}}
           <span *ngIf="res.reminder" style="background-color:#e91e63; color:#fff ">&nbsp; <i> Reminder</i> &nbsp;</span>
         </div>
         <div class="col-1" >
           <i *ngIf="res.star"  class="fas fa-star start" (click)="l_star(i, res.nid)" ></i>
           <i *ngIf="!res.star"  class="fas fa-star " style="color:gray" (click)="l_star(i, res.nid)" ></i>
-          <i class="fas fa-check read" (click)="l_right(i, res.nid)"></i>
+          <!-- <i class="fas fa-check read" (click)="l_right(i, res.nid)"></i> -->
           <i class="fas fa-history reminder" (click)="l_clock(i, res.nid)"></i>
         </div>
         <div class="col-12" >
@@ -42,7 +49,15 @@
 
       <div class="row" *ngFor="let res of read; let i = index ">
         <div class="col-10" >
-          <a> <b> {{(i+1)}}. </b> </a>  <i>  Emp. Id : {{res.IDno}} </i> <br> {{res.name}} <br> Contract Expires on : {{res.expires}}
+          <a> <b> {{(i+1)}}. </b> </a>    Emp. Id :  <span (click)="getEmployee(res.IDno)" style="cursor: pointer;"> <i> <u> {{res.IDno}}</u></i> </span>
+          <br>{{res.name}}
+          <br>
+          <span *ngIf="res.message1 == 'Post confirmation'" style="background-color:#c5c9f5"> {{res.message1}} </span>
+          <span *ngIf="res.message1 == 'Increment'" style="background-color:#a9f5ac"> {{res.message1}} </span>
+          <span *ngIf="res.message1 == 'Promotion'" style="background-color:#b3e8fd"> {{res.message1}} </span>
+          <span *ngIf="res.message1 == 'Superannuation'" style="background-color:#ffd5a7"> {{res.message1}} </span>
+          <span *ngIf="res.message1 == 'Tenure completion'" style="background-color:#ffb8e5"> {{res.message1}} </span>
+          &nbsp; {{res.message2}}
         </div>
         <div class="col-1" >
           <i *ngIf="res.star"  class="fas fa-star start" (click)="r_star(i, res.nid)" ></i>
@@ -54,17 +69,26 @@
       </div>
 
     </div>
+
     <div id="menu2" class="container tab-pane fade" style="height:350px; overflow:auto;  border-top: 3px solid #e91e63; border-radius:1px;">
       <br>
       <div class="row" *ngFor="let res of reminder; let i = index ">
         <div class="col-10" >
-          <a> <b> {{(i+1)}}. </b> </a>  <i>  Emp. Id : {{res.IDno}} </i> <br> {{res.name}} <br> Contract Expires on : {{res.expires}} <br>
+          <a> <b> {{(i+1)}}. </b> </a>   Emp. Id :  <span (click)="getEmployee(res.IDno)" style="cursor: pointer;"> <i> <u> {{res.IDno}}</u></i> </span>
+          <br>{{res.name}}
+          <br>
+          <span *ngIf="res.message1 == 'Post confirmation'" style="background-color:#c5c9f5"> {{res.message1}} </span>
+          <span *ngIf="res.message1 == 'Increment'" style="background-color:#a9f5ac"> {{res.message1}} </span>
+          <span *ngIf="res.message1 == 'Promotion'" style="background-color:#b3e8fd"> {{res.message1}} </span>
+          <span *ngIf="res.message1 == 'Superannuation'" style="background-color:#ffd5a7"> {{res.message1}} </span>
+          <span *ngIf="res.message1 == 'Tenure completion'" style="background-color:#ffb8e5"> {{res.message1}} </span>
+          &nbsp; {{res.message2}} <br>
           <span *ngIf="res.reminder" style="background-color:#e91e63; color:#fff ">&nbsp; <i> Reminder set for : {{res.reminder}} </i> &nbsp;</span>
         </div>
         <div class="col-1" >
           <i *ngIf="res.star"  class="fas fa-star start" (click)="rr_star(i, res.nid)" ></i>
           <i *ngIf="!res.star"  class="fas fa-star " style="color:gray" (click)="rr_star(i, res.nid)" ></i>
-          <i class="fas fa-check read" (click)="rr_right(i, res.nid)"></i>
+          <!-- <i class="fas fa-check read" (click)="rr_right(i, res.nid)"></i> -->
           <i class="fas fa-history reminder" (click)="rr_clock(i, res.nid)"></i>
         </div>
         <div class="col-12" >
@@ -73,6 +97,7 @@
       </div>
 
     </div>
+
   </div>
 </div>
 

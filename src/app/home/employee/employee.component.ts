@@ -21,6 +21,7 @@ export class EmployeeComponent implements OnInit {
 
     this.sub1 = this.projectService.emitEmployeeInfo.subscribe(res=>{
       this.details = res;
+      localStorage.setItem('department', this.details[3].value);
     })
 
     this.empType = localStorage.getItem('empType');
@@ -31,6 +32,7 @@ export class EmployeeComponent implements OnInit {
     this.sub = this.route.queryParams.subscribe(params => {
       this.id = params['id'];
       this.projectService.getEmployeeDetails(this.id);
+
     });
     // this.projectService.getEmployeeInfo();
   }
@@ -39,9 +41,7 @@ export class EmployeeComponent implements OnInit {
     $('#employeeModal').modal('show');
   }
 
-  showData() {
-    console.log(this.details);
-  }
+  
 
   editSaveEmployee() {
     this.projectService.editSaveEmployee(this.id, this.details);

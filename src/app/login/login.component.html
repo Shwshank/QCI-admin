@@ -1,3 +1,26 @@
-<p>
-  login works!
-</p>
+<div class="wrapper" style="height:100%">
+  <form class="form-signin loginBox"  >
+    <div class="row justify-content-md-center" >
+      <!-- <div class="col-12 align-center" >
+        <img style="margin-left:100px" src="./assets/c1.png" alt="">
+
+      </div>
+      <div class="col-12 align-center" >
+        <b><p style="margin-left:135px">coal</p></b>
+      </div> -->
+    </div>
+    <h3 class="form-signin-heading">QCI Admin</h3>
+    <hr>
+    <h5> Employee Management System </h5>
+    <br>
+    <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus=""  [(ngModel)]='email' />
+    <br>
+    <input type="password" class="form-control" name="password" placeholder="Password" required=""  [(ngModel)]='password'/>
+    <br>
+    <label class="checkbox">
+      <input type="checkbox"   value="remember-me" id="rememberMe" name="rememberMe" checked> Remember me
+    </label>
+
+    <button class="btn btn-lg btn-success btn-block" type="submit" (click)='login()'>Login</button>
+  </form>
+</div>
