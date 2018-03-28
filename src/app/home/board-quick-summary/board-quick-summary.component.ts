@@ -55,7 +55,7 @@ export class BoardQuickSummaryComponent implements OnInit {
           responsive: true,
           dom: 'lBfrtip',
           buttons: [
-              'csv', 'pdf',
+              'csv'
           ]
         });
 

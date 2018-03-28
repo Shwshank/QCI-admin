@@ -1,10 +1,13 @@
 <div class="container-fluid">
   <br>
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a [routerLink]="['/home/dashboard']" >Dashboard</a></li>
-      <li class="breadcrumb-item active" aria-current="page"> <b> {{empType}} </b> </li>
-    </ol>
+  <nav aria-label="breadcrumb" style="padding-right:0px !important">
+      <ol class=" breadcrumb " style="padding-right:0px !important">
+        <li class="breadcrumb-item"><a [routerLink]="['/home/dashboard']" >Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page"> <b> {{empType}} </b> </li>
+        <!-- <li style="margin-left:75%">
+          <button class="btn btn-secondary" style="margin-bottom:0; background-color:#e9ecef; color: gray; border: 2px solid gray !important" >All Emp</button>
+        </li> -->
+      </ol>
   </nav>
   <br>
   <div class="row justify-content-center">
@@ -13,26 +16,23 @@
       <div *ngIf='!flag' >Hang on while we are checking the data available!</div>
       <table *ngIf='flag' id="exampleFormResponse" class="table table-striped  " cellspacing="0" >
         <thead>
-            <tr>
-                <th *ngFor='let head of header; let i = index'>{{head}}</th>
-            </tr>
+          <tr>
+            <th *ngFor='let head of header; let i = index'>{{head}}</th>
+          </tr>
         </thead>
         <tbody>
           <tr *ngFor='let res of response; let i = index'>
                 <th>{{(i+1)}} </th>
-
                 <td *ngFor='let temp of res; let j = index'>
                   <span *ngIf='temp.type!= "Details" && temp.type!="renewtime" && temp.type!="button"' >  {{temp.value}} </span>
                   <span *ngIf='temp.type == "button" && temp.value'>
                      <!-- &nbsp;  <button class="btn btn-success"> {{temp.value}}</button> -->
-                    <button *ngIf='temp.diffsec >15552000' class="btn btn-success" > {{temp.value}} <span style="display:none">more than 6 months</span> </button>
-                    <button *ngIf='temp.diffsec <= 15552000 && temp.diffsec >5184000' class="btn btn-primary" > {{temp.value}}   <span style="display:none">more than 2 months</span>  </button>
-                    <button *ngIf='temp.diffsec <= 5184000 && temp.diffsec >=2592000' class="btn btn-warning" > {{temp.value}}   <span style="display:none">less than 2 6 months </span>  </button>
-                    <button *ngIf='temp.diffsec <=2592000' class="btn btn-danger" > {{temp.value}}  <span style="display:none">less than 1 2 3 4 5 6 months </span>  </button>
+                    <button *ngIf='temp.diffsec >15552000' class="btn btn-success" > {{temp.value}} </button>
+                    <button *ngIf='temp.diffsec <= 15552000 && temp.diffsec >5184000' class="btn btn-primary" > {{temp.value}} </button>
+                    <button *ngIf='temp.diffsec <= 5184000 && temp.diffsec >=2592000' class="btn btn-warning" > {{temp.value}} </button>
+                    <button *ngIf='temp.diffsec <=2592000' class="btn btn-danger" > {{temp.value}} </button>
                   </span>
-
                   <span *ngIf='temp.type == "button" && !temp.value'> N A </span>
-
                   <span *ngIf='temp.type == "Details" && temp.type!="button"'>  <button class="btn btn-success" (click)="getEmployeeDetails(temp.value)"> Details </button> </span>
 
                 </td>
