@@ -4,18 +4,18 @@
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#home"> <i class="fas fa-bell bell"></i> <span class="bell" > <b> {{latest.length}} </b> </span> Latest  </a>
     </li>
-    <!-- <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#menu1"> <i class="fas fa-check read"></i> <span class="read" > <b> {{read.length}} </b> </span> Read  </a>
-    </li> -->
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#menu2"> <i class="fas fa-history reminder"></i> <span class="reminder" > <b> {{reminder.length}} </b> </span> Reminder</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu1"> <i class="fas fa-check read"></i> <span class="read" > <b> {{read.length}} </b> </span> Read  </a>
     </li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
 
-    <div id="home" class="container tab-pane active"  style="height:350px; overflow:auto;  border-top: 3px solid orange; border-radius:1px;">
+    <div id="home" class="container tab-pane active"  style="height:500px; overflow:auto;  border-top: 3px solid orange; border-radius:1px;">
       <br>
 
       <div class="row" *ngFor="let res of latest; let i = index ">
@@ -34,7 +34,7 @@
         <div class="col-1" >
           <i *ngIf="res.star"  class="fas fa-star start" (click)="l_star(i, res.nid)" ></i>
           <i *ngIf="!res.star"  class="fas fa-star " style="color:gray" (click)="l_star(i, res.nid)" ></i>
-          <!-- <i class="fas fa-check read" (click)="l_right(i, res.nid)"></i> -->
+          <i class="fas fa-check read" (click)="l_right(i, res.nid)"></i>
           <i class="fas fa-history reminder" (click)="l_clock(i, res.nid)"></i>
         </div>
         <div class="col-12" >
@@ -44,7 +44,7 @@
 
     </div>
 
-    <div id="menu1" class="container tab-pane fade" style="height:350px; overflow:auto;  border-top: 3px solid #03a9f4; border-radius:1px;">
+    <div id="menu1" class="container tab-pane fade" style="height:500px; overflow:auto;  border-top: 3px solid #03a9f4; border-radius:1px;">
       <br>
 
       <div class="row" *ngFor="let res of read; let i = index ">
@@ -70,7 +70,7 @@
 
     </div>
 
-    <div id="menu2" class="container tab-pane fade" style="height:350px; overflow:auto;  border-top: 3px solid #e91e63; border-radius:1px;">
+    <div id="menu2" class="container tab-pane fade" style="height:500px; overflow:auto;  border-top: 3px solid #e91e63; border-radius:1px;">
       <br>
       <div class="row" *ngFor="let res of reminder; let i = index ">
         <div class="col-10" >
@@ -88,7 +88,7 @@
         <div class="col-1" >
           <i *ngIf="res.star"  class="fas fa-star start" (click)="rr_star(i, res.nid)" ></i>
           <i *ngIf="!res.star"  class="fas fa-star " style="color:gray" (click)="rr_star(i, res.nid)" ></i>
-          <!-- <i class="fas fa-check read" (click)="rr_right(i, res.nid)"></i> -->
+          <i class="fas fa-check read" (click)="rr_right(i, res.nid)"></i>
           <i class="fas fa-history reminder" (click)="rr_clock(i, res.nid)"></i>
         </div>
         <div class="col-12" >
