@@ -4,9 +4,9 @@
       <ol class=" breadcrumb " style="padding-right:0px !important">
         <li class="breadcrumb-item"><a [routerLink]="['/home/dashboard']" >Dashboard</a></li>
         <li class="breadcrumb-item active" aria-current="page"> <b> {{empType}} </b> </li>
-        <!-- <li style="margin-left:75%">
-          <button class="btn btn-secondary" style="margin-bottom:0; background-color:#e9ecef; color: gray; border: 2px solid gray !important" >All Emp</button>
-        </li> -->
+        <li style="margin-left:75%">
+          <button (click)="getFileForDownload()" class="btn btn-secondary" style="margin-bottom:0; padding-bottom:0; padding-top:0; margin-top:0; background-color:#e9ecef; color: gray; border: 2px solid gray !important" ><i class="fas fa-cloud-download-alt"></i> Details</button>
+        </li>
       </ol>
   </nav>
   <br>

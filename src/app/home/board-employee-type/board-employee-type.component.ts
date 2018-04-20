@@ -42,6 +42,10 @@ export class BoardEmployeeTypeComponent implements OnInit {
     // this.projectService.getBoardTable();
   }
 
+  getFileForDownload() {
+    this.projectService.getFileForDownload(this.empType);
+  }
+
   display() {
     if(this.flag) {
       $(document).ready(function() {

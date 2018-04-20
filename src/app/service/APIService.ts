@@ -96,4 +96,8 @@ export class APIService {
     return this.http.post(this.projectURL+'/getAllEmployees',data).map(res=>res.json());
   }
 
+  GetFileForDownload(empType) {
+    return this.http.get(this.projectURL+'/getLink/?empType='+empType).map(res=>res.json());
+  }
+
 }

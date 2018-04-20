@@ -171,4 +171,11 @@ export class ProjectService {
     })
   }
 
+  getFileForDownload(empType) {
+    this.apiService.GetFileForDownload(empType).subscribe(res=>{
+      console.log(res);
+      window.open(res.url, '_blank');
+    });
+  }
+
 }
